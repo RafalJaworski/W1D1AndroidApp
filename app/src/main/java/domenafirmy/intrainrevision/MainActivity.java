@@ -10,7 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText names ;
     private RadioGroup gender ;
@@ -25,23 +25,40 @@ public class MainActivity extends AppCompatActivity {
         this.gender = (RadioGroup) findViewById(R.id.gender_group);
         this.button = (Button) findViewById(R.id.button_send);
 
+        button.setOnClickListener(this);
+
     }
 
     public void toastMsg()
     {
         String fullname = this.names.getText().toString() ;
 
+        String gender = "person without the gender?";
+
         if(fullname.isEmpty())
         {
             fullname = "Stranger";
         }
 
-        String gender = this.gender.getCheckedRadioButtonId() == R.id.man ? "Man" : "Woman";
+        if(this.gender.getCheckedRadioButtonId() != -1)
+        {
+            gender = this.gender.getCheckedRadioButtonId() == R.id.man ? "Man" : "Woman";
+        }
+
 
         String result = String.format("Hi! %s you are a %S",fullname,gender);
 
-        Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,result,Toast.LENGTH_LONG).show();
     }
 
-   
+
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
+        this.toastMsg();
+    }
 }
