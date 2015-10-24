@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/googleQuery"
+        android:id="@+id/googleConnection"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:title="@string/send_sms"
+        android:id="@+id/sms_sender"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:title="@string/send_sms_lg"
+        android:id="@+id/sms_sender_lg"
+        app:showAsAction="never"
+        />
+
+
+
+</menu>

@@ -2,9 +2,14 @@ package domenafirmy.intrainrevision;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,10 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             gender = this.gender.getCheckedRadioButtonId() == R.id.man ? "Man" : "Woman";
         }
 
-
-        String result = String.format("Hi! %s you are a %S",fullname,gender);
-
-
         Intent intent = new Intent(this , NamesActivity.class);
 
         if(fullname.length() < 2)
@@ -80,5 +81,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         this.toastMsg();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu,menu);
+
+        return true; //means that we inject the menu by myself
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId())
+        {
+            case R.id.googleConnection :
+                //intent niejawny bo nie odwoluje sie do zadnego kompoentu
+                Intent openGoogle = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.pl"));
+                startActivity(openGoogle);
+
+                return true;
+
+            case R.id.sms_sender :
+
+                Intent sendSms = new Intent(Intent.ACTION_SENDTO,Uri.parse("sms:+48727592866"));
+                startActivity(sendSms);
+
+                return true;
+
+            case R.id.sms_sender_lg :
+
+                SmsManager managerSms =  SmsManager.getDefault();
+
+                String content = "This sms contain polish ąćłóęóąćłóęóąćłóęóąćłóęóąćłóęó";
+
+                managerSms.sendMultipartTextMessage("+48722276509", null, managerSms.divideMessage(content), null, null);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

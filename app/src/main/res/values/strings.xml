@@ -6,4 +6,7 @@
     <string name="btn_send">Send</string>
     <string name="btnEscape">Escape</string>
     <string name="btnOk">OK</string>
+    <string name="googleQuery">Open Google.ccom</string>
+    <string name="send_sms">Send short SMS</string>
+    <string name="send_sms_lg">Send long SMS</string>
 </resources>
