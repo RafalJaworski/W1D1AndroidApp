@@ -12,11 +12,18 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText names ;
+    private RadioGroup gender ;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.names = (EditText) findViewById(R.id.names_input);
+        this.gender = (RadioGroup) findViewById(R.id.gender_group);
+        this.button = (Button) findViewById(R.id.button_send);
 
     }
 
