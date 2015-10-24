@@ -4,12 +4,14 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class NamesActivity extends AppCompatActivity {
     
     public static final String EXTRA_NAME = "name";
     private TextView fullname ;
+    private Button btnEscape ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +26,9 @@ public class NamesActivity extends AppCompatActivity {
 
             this.fullname.setText(paramValue);
         }
+
+        btnEscape = (Button) findViewById(R.id.btnEscape);
+
+        btnEscape.setOnClickListener(new FinishOnClickListener(this));
     }
 }
