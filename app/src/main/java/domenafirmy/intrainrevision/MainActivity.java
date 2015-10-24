@@ -1,5 +1,6 @@
 package domenafirmy.intrainrevision;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,6 +50,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String result = String.format("Hi! %s you are a %S",fullname,gender);
 
         Toast.makeText(this,result,Toast.LENGTH_LONG).show();
+
+
+        Intent intent = new Intent(this , NamesActivity.class);
+
+        intent.putExtra(NamesActivity.EXTRA_NAME,fullname);
+
+        startActivity(intent);
     }
 
 
