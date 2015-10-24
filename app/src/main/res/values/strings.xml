@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">inTrainRevision</string>
+    <string name="names_hint">Forename and Surname</string>
 </resources>
