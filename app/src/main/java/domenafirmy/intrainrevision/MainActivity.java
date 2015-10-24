@@ -27,4 +27,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void toastMsg()
+    {
+        String fullname = this.names.getText().toString() ;
+
+        if(fullname.isEmpty())
+        {
+            fullname = "Stranger";
+        }
+
+        String gender = this.gender.getCheckedRadioButtonId() == R.id.man ? "Man" : "Woman";
+
+        String result = String.format("Hi! %s you are a %S",fullname,gender);
+
+        Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
+    }
+
+   
 }
