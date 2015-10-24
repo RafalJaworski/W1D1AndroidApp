@@ -5,4 +5,5 @@
     <string name="radio_woman">Woman</string>
     <string name="btn_send">Send</string>
     <string name="btnEscape">Escape</string>
+    <string name="btnOk">OK</string>
 </resources>

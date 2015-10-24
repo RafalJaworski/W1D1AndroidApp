@@ -1,15 +1,15 @@
 package domenafirmy.intrainrevision;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -36,11 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String gender = "person without the gender?";
 
-        if(fullname.isEmpty())
-        {
-            fullname = "Stranger";
-        }
-
         if(this.gender.getCheckedRadioButtonId() != -1)
         {
             gender = this.gender.getCheckedRadioButtonId() == R.id.man ? "Man" : "Woman";
@@ -49,14 +44,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String result = String.format("Hi! %s you are a %S",fullname,gender);
 
-        Toast.makeText(this,result,Toast.LENGTH_LONG).show();
-
 
         Intent intent = new Intent(this , NamesActivity.class);
 
-        intent.putExtra(NamesActivity.EXTRA_NAME,fullname);
+        if(fullname.length() < 2)
+        {
 
-        startActivity(intent);
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setTitle("Error")
+                    .setMessage("Get us your names")
+                    //special onclick for dialogs
+                    .setPositiveButton(R.string.btnOk, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .create();
+
+            dialog.show();
+
+        }else{
+
+            intent.putExtra(NamesActivity.EXTRA_NAME, fullname);
+            startActivity(intent);
+
+        }
     }
 
 
