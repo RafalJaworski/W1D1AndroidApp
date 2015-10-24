@@ -13,6 +13,29 @@
     android:layout_height="wrap_content"
     android:singleLine="true"
     android:hint="@string/names_hint"
-    
     />
+    <RadioGroup
+        android:id="@+id/gender_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/names_input"
+        >
+        <RadioButton
+            android:id="@+id/man"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_man"
+            />
+        <RadioButton
+            android:id="@+id/woman"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_woman"
+            />
+
+
+    </RadioGroup>
 </RelativeLayout>
